@@ -1,0 +1,189 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="appBackground">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-label>
+      <ion-title class="ion-text-center">
+        Record Audio
+      </ion-title>
+    </ion-label>
+    <!-- <ion-title text-center text-uppercase color="light">From Enappd</ion-title> -->
+  </ion-toolbar>
+  <!-- <ion-toolbar mode="md">
+    <ion-title text-center text-uppercase color="light">Playing Music in Ionic-Capacitor</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content class="appBackground">
+
+  
+  <!-- <ion-button (click)="RecordAudio()">Record</ion-button>
+  <ion-button (click)="StopRecording()">Stop Recording</ion-button> -->
+  
+  
+  <!-- <ion-button expand="full" (click)="startVideo()" >Start Video</ion-button> -->
+  <!-- <ion-button expand="full" (click)="startAudio()" >Start Audio</ion-button> -->
+  <!-- <ion-button expand="full" (click)="stop()" >Stop</ion-button> -->
+  <!-- <ion-label>
+    <ion-text>
+      <h1>{{ status }}</h1>
+    </ion-text>
+  </ion-label> -->
+  
+  <ion-card-content>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item class="">
+        <ion-label position="floating">Voice Name</ion-label>
+        <ion-input type="text" [(ngModel)]="memoryName" formControlName="memoryName" (keyup)="onChangememoryName($event)"  [readonly]="startRecord"></ion-input>
+    </ion-item>
+
+    <div class="audioMemoryDiv">
+      <div *ngIf="!audioRecordingStatus" class="divCenter">
+          <ion-button class="loginPage" color="primary" [disabled]="!memoryNameStatus" (click)="recordStop()" >
+              <ion-icon name="{{ recordAudioStopIcon }}-outline" color="danger"></ion-icon>
+          </ion-button>
+        </div> 
+          <ion-row *ngIf="audioRecordingStatus">
+            <ion-col size="12" size-md>
+                <ion-row>
+                  <ion-col size="2" size-md>
+                    <ion-button style="--box-shadow: none;" class="loginPage" color="transparant" (click)="playPause()" >
+                        <ion-icon name="{{ playPauseIcon }}" color="danger"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="8" size-md>
+                    <ion-text>{{  audioFullName }}</ion-text>
+                  </ion-col>
+                  <ion-col size="2" size-md>
+                    <ion-button class="loginPage" color="primary" (click)="recordStop()" >
+                        <ion-icon name="{{ recordAudioStopIcon }}-outline" color="danger"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+    
+                </ion-row>
+    
+            </ion-col>
+          </ion-row>
+    </div>
+
+          <div class="messageSchedule">
+        
+            <div class="memorySetting">
+                <ion-row style="padding-top: 14px;">
+                  <ion-col size="9" size-md>
+                    <ion-text color="secondary">
+                      <h2>Create Reminder</h2>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="3" size-md>
+                    <ion-toggle (ionChange)="toogleOptions('reminder',$event)"></ion-toggle>
+                  </ion-col>
+                </ion-row>
+                <div class="divCenter" >
+                  <ion-row style="padding-bottom: 13px;">
+                    <ion-col size="4" size-md>
+                      <ion-button *ngIf="createReminderDaily" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('daily')">Daily</ion-button>
+                      <ion-button *ngIf="!createReminderDaily" size="small" [disabled]="createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('daily')">Daily</ion-button>
+                    </ion-col>
+                    <ion-col size="4" size-md>
+                      <ion-button *ngIf="createReminderWeekly" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('weekly')">Weekly</ion-button>
+                      <ion-button *ngIf="!createReminderWeekly" size="small" [disabled]="createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('weekly')">Weekly</ion-button>
+                    </ion-col>
+                    <ion-col size="4" size-md>
+                      <ion-button *ngIf="createReminderMonthly" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('monthly')">Monthly</ion-button>
+                      <ion-button *ngIf="!createReminderMonthly" size="small" [disabled]="createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('monthly')">Monthly</ion-button>
+                    </ion-col>
+                  </ion-row>
+              </div>
+            </div>
+          
+    
+          <div class="memorySetting">
+              <ion-row style="padding-top: 14px;">
+                <ion-col size="9" size-md>
+                  <ion-text color="secondary">
+                    <h2>Delivery Date</h2>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3" size-md>
+                  <ion-toggle (ionChange)="toogleOptions('deliveryDate',$event)"></ion-toggle>
+                </ion-col>
+              </ion-row>
+              <div class="divCenter" >
+                <ion-item style="--background: auto;">
+                  <ion-label>Date & Time</ion-label>
+                  <ion-datetime [readonly]="deliveryDateStatus" displayFormat="D MMM YYYY H:mm" min="2020" max="2050" value="{{ currentDateTime }}" formControlName="deliveryDate"></ion-datetime>
+                </ion-item>
+
+            </div>
+          </div>
+    
+          <div class="memorySetting">
+              <ion-row style="padding-top: 14px;">
+                <ion-col size="9" size-md>
+                  <ion-text color="secondary">
+                    <h2>Repeat Delivery Date</h2>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3" size-md>
+                  <ion-toggle (ionChange)="toogleOptions('repeatDelivery',$event)"></ion-toggle>
+                </ion-col>
+              </ion-row>
+              <div class="divCenter" >
+                <ion-row style="padding-bottom: 13px;">
+                  <ion-col size="3" size-md>
+                    <ion-button *ngIf="repeatDeliveryDaily" class="xsmall" size="small" shape="round" expand="block" color="secondary" (click)="repeatDelivery('daily')">Daily</ion-button>
+                    <ion-button *ngIf="!repeatDeliveryDaily" [disabled]="repeatDeliveryStatus" class="xsmall" size="small" shape="round" expand="block" fill="outline" (click)="repeatDelivery('daily')">Daily</ion-button>
+                  </ion-col>
+                  <ion-col size="3" size-md>
+                    <ion-button *ngIf="repeatDeliveryWeekly" class="xsmall" size="small" shape="round" expand="block" color="secondary" (click)="repeatDelivery('weekly')">Weekly</ion-button>
+                    <ion-button *ngIf="!repeatDeliveryWeekly" [disabled]="repeatDeliveryStatus" class="xsmall" size="small" shape="round" expand="block" fill="outline" (click)="repeatDelivery('weekly')">Weekly</ion-button>
+                  </ion-col>
+                  <ion-col size="3" size-md>
+                    <ion-button *ngIf="repeatDeliveryMonthly" class="xsmall" size="small" shape="round" expand="block" color="secondary" (click)="repeatDelivery('monthly')">Monthly</ion-button>
+                    <ion-button *ngIf="!repeatDeliveryMonthly" [disabled]="repeatDeliveryStatus" class="xsmall" size="small" shape="round" expand="block" fill="outline" (click)="repeatDelivery('monthly')">Monthly</ion-button>
+                  </ion-col>
+                  <ion-col size="3" size-md>
+                    <ion-button *ngIf="repeatDeliveryYearly" class="xsmall" size="small" shape="round" expand="block" color="secondary" (click)="repeatDelivery('yearly')">Yearly</ion-button>
+                    <ion-button *ngIf="!repeatDeliveryYearly" [disabled]="repeatDeliveryStatus" class="xsmall" size="small" shape="round" expand="block" fill="outline" (click)="repeatDelivery('yearly')">Yearly</ion-button>
+                  </ion-col>
+                </ion-row>
+            </div>
+          </div>
+
+          <div class="memorySetting">
+            <ion-row style="padding-top: 14px;">
+              <ion-col size="9" size-md>
+                <ion-text color="secondary">
+                  <h2>Set Location</h2>
+                </ion-text>
+              </ion-col>
+              <ion-col size="3" size-md>
+                <ion-toggle (ionChange)="toogleOptions('setLocation',$event)"></ion-toggle>
+              </ion-col>
+            </ion-row>
+        </div>
+    
+        </div>
+          
+      <div style="text-align: center !important;" >
+        <ion-button type="submit" class="loginPage" color="primary" expand="round" [disabled]="nextStatus" >
+            <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+            Next
+        </ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+</ion-content>
+<ion-footer color="primary">
+  <ion-button expand="full">
+    <!-- <a href="https://enappd.com">More Ionic 4 Templates & Starters</a> -->
+  </ion-button>
+</ion-footer>

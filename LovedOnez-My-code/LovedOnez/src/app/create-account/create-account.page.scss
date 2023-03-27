@@ -1,0 +1,31 @@
+ion-content.login {
+    --background: url('/assets/img/login_background.jpg') no-repeat 24% 17%;
+}
+
+.loginPage {
+    opacity: 0.8;
+}
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    }
+
+.lCard{
+    opacity: 0.8;
+}
+ion-card.logoImg3{
+  border-radius: 4%;
+  margin-left: 5%;
+  margin-right: 31%;
+}
+
+:host {
+    ion-header {
+      ion-toolbar {
+        --background-color: transparent;
+        --ion-color-base: transparent !important;
+      }
+    }
+  
+ 
+  }

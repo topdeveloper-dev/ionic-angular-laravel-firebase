@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>View Message</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="secondary" style="padding-right: 16px;">
+    <ion-buttons slot="end">
+      <ion-icon name="funnel-outline" class="custom-icon" style="color: aliceblue; font-weight: bold;" size="small" ></ion-icon>
+    </ion-buttons>
+        <div class="ion-text-center">
+          <ion-title style="font-size: 18px;">Show all messages</ion-title>
+        </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="appBackground">
+  <ion-row style="padding-top: 13px; padding-bottom: 13px;">
+    <ion-col size="4" size-md>
+      <ion-button *ngIf="received" shape="round" expand="block" color="secondary" (click)="memoryTypeChange(1)">RECEIVED</ion-button>
+      <ion-button *ngIf="!received" shape="round" expand="block" fill="outline" (click)="memoryTypeChange(1)">RECEIVED</ion-button>
+    </ion-col>
+    <ion-col size="4" size-md>
+      <ion-button *ngIf="sent" shape="round" expand="block" color="secondary" (click)="memoryTypeChange(2)">SENT</ion-button>
+      <ion-button *ngIf="!sent" shape="round" expand="block" fill="outline" (click)="memoryTypeChange(2)">SENT</ion-button>
+    </ion-col>
+    <ion-col size="4" size-md>
+      <ion-button *ngIf="draft" shape="round" expand="block" color="secondary" (click)="memoryTypeChange(3)">DRAFT</ion-button>
+      <ion-button *ngIf="!draft" shape="round" expand="block" fill="outline" (click)="memoryTypeChange(3)">DRAFT</ion-button>
+    </ion-col>
+  </ion-row>
+  <div>
+    <!-- <ion-card-content> -->
+      <ion-card>
+          <ion-grid>
+            <ion-item-divider class="messageDivider" *ngFor="let message of messages">
+              <ion-row *ngIf="clickedMemoryId !== message.memoryid" style="background-color: {{ messageViewStatus(message.viewStatus).color }};"  >
+                <ion-col size="2" >
+                  <div class="qwIcon" style="background: {{ getIconData(message.memoryType).color }}; border-radius: 50%; padding: 16px; margin-top: 12px;">
+                    <ion-icon name="{{ getIconData(message.memoryType).icon }}-outline" class="custom-icon" style="color: aliceblue; font-weight: bold;" size="small" ></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col size="7">
+                  <div>
+                    <ion-row>
+                      <ion-col size="12" size-md>
+                        <div class="messageName">
+                          {{ message.memoryName }}
+                        </div>
+                      </ion-col>
+                      <ion-col size="12" size-md>
+                        <ion-text color="primary">{{ message.memoryType }}: </ion-text>{{ getdate(message.dateCreated) }}
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-col>
+                <ion-col size="3" (click)="toggleMessageRow(message.memoryid)" >
+                  <ion-icon *ngIf="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'received'" name="arrow-down-outline" style="color: #EE6C6D" size="large"  ></ion-icon>
+                  <div class="ion-text-center">
+                  <ion-row *ngIf="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'sent'">
+                    <ion-col size="12" size-md>
+                      <ion-icon *ngIf="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'sent'" name="ellipsis-horizontal" style="color: #EE6C6D" size="large"  ></ion-icon>
+                    </ion-col>
+                    <ion-col *ngIf="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'sent'" size="12" size-md>
+                        <ion-text color="secondary">
+                            <div *ngIf="deliveryStatus(message.deliveryDate, message.sendStatus)" style="font-size: 8px; font-weight: 600;">
+                              DELEIVERED
+                            </div>
+                            <div *ngIf="!deliveryStatus(message.deliveryDate, message.sendStatus)" style="font-size: 8px; font-weight: 600;">
+                              SENT
+                            </div>
+                        </ion-text>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                  <ion-icon class="ion-float-right" *ngIf="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'saved'" name="arrow-down-outline" style="color: #f86300f8;" size="large"  ></ion-icon>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="clickedMemoryId == message.memoryid" [ngStyle]="{'background-color': messageViewStatus(message.viewStatus).color }" style="height: 75px;"   >
+                <ion-col size="3" >      
+                  <ion-button (click)="toggleMessageRow(null)"  size="large" expand="block" color="primary"><ion-icon slot="icon-only"  name="arrow-forward-outline"></ion-icon></ion-button>
+                </ion-col>
+                <ion-col size="3" >
+                  <ion-button  size="large" expand="block" color="success" (click)="viewMessage(message.memoryid, checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId))"><ion-icon slot="icon-only" name="eye-outline"></ion-icon></ion-button>
+                </ion-col>
+                <ion-col size="3" >
+                  <ion-button  size="large" expand="block" color="secondary"  [disabled]="checkMemoryStatus(message.type, message.deliveryDate, message.sendStatus, message.senderId, message.recipientId) == 'received'" (click)="editMemory(message.memoryid)"><ion-icon slot="icon-only" name="pencil"></ion-icon></ion-button>
+                </ion-col>
+                <ion-col size="3" >
+                  <ion-button  size="large" expand="block" color="danger" (click)="confirmDelete(message.memoryid)" ><ion-icon name="trash-outline" ></ion-icon></ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-item-divider>
+          </ion-grid>
+      </ion-card>
+    <!-- </ion-card-content> -->
+  </div>
+</ion-content>

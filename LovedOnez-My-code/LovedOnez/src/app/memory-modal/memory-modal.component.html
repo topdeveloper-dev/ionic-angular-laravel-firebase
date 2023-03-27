@@ -1,0 +1,52 @@
+<ion-content class="appBackground">
+    <div *ngIf="modId == 'mesOptions'" class="modalContent" (click)="dismissModal(modId)" >
+        <ion-row >
+            <ion-col size="12" size-md>
+                <ion-img class="imgdiv"  [src]="letterImg"></ion-img>
+            </ion-col>
+            <ion-col size="12" size-md>
+                <div class="modalText">
+                    <ion-text>
+                        <h1>{{ message }}</h1>
+                    </ion-text>
+                </div>
+            </ion-col>
+          </ion-row>
+          
+          
+        </div>
+        <div *ngIf="modId == 'termsAndConditions'">
+            <div  class="fixed" id="myFixZone">
+              <ion-card  class="lCard">
+                <ion-card-content>
+                  <div class="logoImg">
+                    <ion-img class [src]="appLogo" (click)="dismissModalTC();"></ion-img>
+                  </div>
+                  <ion-text class="tcHead">
+                    <h2>Terms & Conditions</h2>
+                  </ion-text>
+                  <ion-text class="ion-text-justify">
+                      <p >
+                        {{ tcData }}
+                      </p>
+                    </ion-text>
+                 
+                </ion-card-content>
+              </ion-card>
+            </div>
+          
+              <ion-item  class="tcItem">
+                <ion-label class="tcTxt">
+                  I have read the Terms & Conditions.
+                </ion-label> 
+                <ion-checkbox [(ngModel)]="isCheckedtc" ></ion-checkbox>
+              </ion-item>
+              <br>
+              <ion-button shape="round" expand="block" color="secondary" (click)="dismissModalTC()">Continue</ion-button>
+              <span class="error ion-padding errorTxts ion-text-justify" color="red" *ngIf="tcMessage!=='' && !isCheckedtc && modId == 'termsAndConditions'">
+                {{ messageCheck }}
+              </span>
+
+        </div>
+</ion-content>
+

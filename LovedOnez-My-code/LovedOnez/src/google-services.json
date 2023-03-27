@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008679885758",
+    "project_id": "loved-onez",
+    "storage_bucket": "loved-onez.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008679885758:android:2f0176537f63236dafb7ef",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008679885758-ag3ffd94hcc9dc2447cqakr8msasffvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArLimmlJGQ_9Wtb_Iq64FuydCl1eJoR98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008679885758-ag3ffd94hcc9dc2447cqakr8msasffvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

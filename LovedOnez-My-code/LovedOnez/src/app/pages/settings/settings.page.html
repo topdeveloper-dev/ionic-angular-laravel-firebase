@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button>
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+  <div class="memorySetting">
+    <ion-row style="padding-top: 14px;">
+      <ion-col size="12"></ion-col>
+      <ion-col size="9" size-md>
+        <ion-text>
+          <h2 class="headerC">Allow Reminders</h2>
+        </ion-text>
+      </ion-col>
+      <ion-col size="3" size-md>
+        <ion-toggle [(ngModel)]="createRemainderStatus" (ionChange)="toogleOptions('reminder')"></ion-toggle>
+      </ion-col>
+    </ion-row>
+    <div class="divCenter" >
+      <ion-row style="padding-bottom: 13px;">
+        <ion-col size="4" size-md>
+          <ion-button *ngIf="createReminderDaily" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('daily')">Daily</ion-button>
+          <ion-button *ngIf="!createReminderDaily" size="small" [disabled]="!createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('daily')">Daily</ion-button>
+        </ion-col>
+        <ion-col size="4" size-md>
+          <ion-button *ngIf="createReminderYearly" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('yearly')">Yearly</ion-button>
+          <ion-button *ngIf="!createReminderYearly" size="small" [disabled]="!createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('yearly')">Yearly</ion-button>
+        </ion-col>
+        <ion-col size="4" size-md>
+          <ion-button *ngIf="createReminderMonthly" size="small" shape="round" expand="block" color="secondary" (click)="createReminder('monthly')">Monthly</ion-button>
+          <ion-button *ngIf="!createReminderMonthly" size="small" [disabled]="!createRemainderStatus" shape="round" expand="block" fill="outline" (click)="createReminder('monthly')">Monthly</ion-button>
+        </ion-col>
+      </ion-row>
+  </div>
+
+  <ion-row style="padding-top: 14px;">
+    <ion-col size="9" size-md>
+      <ion-text>
+        <h2 class="headerC">Push Notifications</h2>
+      </ion-text>
+    </ion-col>
+    <ion-col size="3" size-md>
+      <ion-toggle [(ngModel)]="pushNotificationStatus" (ionChange)="toogleOptions('pushNotifications')"></ion-toggle>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding-top: 14px;">
+    <ion-col size="9" size-md>
+      <ion-text>
+        <h2 class="headerC">Allow Mobile Data Usage</h2>
+      </ion-text>
+    </ion-col>
+    <ion-col size="3" size-md>
+      <ion-toggle [(ngModel)]="allowMobileDataUsageStatus" (ionChange)="toogleOptions('allowMobileDataUsage')"></ion-toggle>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding-top: 14px;">
+    <ion-col size="9" size-md>
+      <ion-text>
+        <h2 class="headerC">Allow Themes</h2>
+      </ion-text>
+    </ion-col>
+    <ion-col size="3" size-md>
+      <ion-toggle [(ngModel)]="allowThemesStatus" (ionChange)="toogleOptions('allowTheme')"></ion-toggle>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding-top: 14px;">
+    <ion-col size="12" size-md>
+      <ion-text>
+        <h2 class="headerC">Notification Sound</h2>
+      </ion-text>
+    </ion-col>
+    <ion-col size="12" size-md>
+        <ion-range  min="0" max="100" color="primary" [(ngModel)]="notificationVolume" (ionChange)="soundChange($event)">
+          <ion-icon size="small" slot="start" name="volume-low-outline" color="secondary"></ion-icon>
+          <ion-icon slot="end" name="volume-high-outline" color="secondary"></ion-icon>
+        </ion-range>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding-top: 14px;">
+    <ion-col size="12" size-md>
+      <ion-text>
+        <h2 class="headerC">Subscription Type</h2>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-top: 14px;">
+      <!-- <ion-item> -->
+        <ion-col size="8" size-md>
+          <ion-text>
+            <h2 class="headerC">{{paymentOption}}</h2>
+          </ion-text>
+        </ion-col>
+        <ion-col size="4" size-md (click)="changepaymentOption()">
+          <ion-text color="secondary">
+            <h2 class="headerC">CHANGE</h2>
+          </ion-text>
+        </ion-col>
+
+      <!-- </ion-item> -->
+  </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+ion-content.appBackground {
+    --background: #f2f2f2;
+       // background-color: rgba(52, 73, 94, 0.75);
+}
+
+
+
+ion-card.profImg{
+    border-radius: 50%;
+    width: 94%;
+    position: relative;
+}
+
+.profileButton{
+    // margin: -79px 11px 6px 57px !important;
+    --box-shadow:none;
+}
+
+.profileImage{
+    margin-top: 5px;
+    transform: scale(1.9);
+}
+
+.userName{
+    padding-top: 38px;
+    padding-left: 20px;
+    width: 94%;
+}

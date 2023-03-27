@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="appBackground">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Timeline</ion-title>
+  </ion-toolbar>
+    <ion-row>
+      <ion-col size="6" size-md>
+        <div class="divCenter">
+          <ion-label class="subHeader" color="danger">
+            Created
+          </ion-label> 
+        </div>
+      </ion-col>
+      <ion-col size="6" size-md>
+        <div class="divCenter">
+          <ion-label class="subHeader" color="danger">
+            Due
+          </ion-label> 
+        </div>
+      </ion-col>
+    </ion-row>
+  
+</ion-header>
+
+<ion-content class="appBackground" padding>
+
+  <timeline endIcon="call">
+    <timeline-item *ngFor="let item of items">
+      <!-- <timeline-time [time]="item.time"></timeline-time> -->
+      <!-- <ion-icon [name]="item.icon"></ion-icon> -->
+      <div class="messageInfo">
+        <ion-row>
+          <ion-col size="6" size-md>
+            <div class="divCenter">
+              <ion-label class="messageHeader" color="secondary">
+                {{ item.memoryName }}
+              </ion-label> 
+              <br>
+              <ion-label class="messageDate">
+                {{ getdate(item.dateCreated) }}
+              </ion-label> 
+              <br>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='saved'" color="warning">
+                Saved
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='sent'" color="success">
+                Sent
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='delivered'" color="primary">
+                Delivered
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='received'" color="danger">
+                Received
+              </ion-text>
+            </div>
+          </ion-col>
+          <ion-col size="6" size-md>
+            <div class="divCenter">
+              <ion-label class="messageHeader" color="secondary">
+                {{ item.memoryName }}
+              </ion-label> 
+              <br>
+              <ion-label class="messageDate">
+                {{ getdate(item.deliveryDate) }}
+              </ion-label>
+              <br>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='saved'" color="warning">
+                Saved
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='sent'" color="success">
+                Sent
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='delivered'" color="primary">
+                Delivered
+              </ion-text>
+              <ion-text *ngIf="getMessageStatus(item.senderId, item.sendStatus, item.recipientId, item.viewStatus)=='received'" color="danger">
+                Received
+              </ion-text>
+              <!-- <ion-label class="messageDate">
+                {{ getMessageStatus(item.senderId, item.sendStatus, item.recipientId)}}
+              </ion-label>  -->
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </timeline-item>
+  </timeline>
+</ion-content>
+
+

@@ -1,0 +1,29 @@
+ion-content.appBackground {
+    --background: url('/assets/img/login_background.jpg') no-repeat 58% 72%;
+    background-color: hsla(255, 255, 255, 0.3);
+    
+}
+.lCard{
+    border-radius: 34px;
+    margin-right: 22%;
+    margin-left: 22%;
+    height: 37%;
+}
+
+.homeDevider {
+    margin-right: 24%;
+    margin-left: 25%;
+    margin-top: -5%;
+    margin-bottom: 8%;
+    --background: hsla(255, 255, 255, 0.3);
+    border-bottom: 2px solid #085072;
+}
+
+.container{
+    margin-top: 5vh;
+}
+
+.card-content-md h2 {
+    font-weight: bold;
+}
+

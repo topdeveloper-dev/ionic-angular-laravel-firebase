@@ -1,0 +1,66 @@
+ion-content.login {
+    --background: url('/assets/img/login_background.jpg') no-repeat 50% 50%;
+    // background-color: rgba(52, 73, 94, 0.75);
+
+}
+
+ion-item.tcItem{
+    --background: hsla(255, 255, 255, 0.3);
+    width: 80%;
+    margin-left: 10%;
+}
+item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    color: white;
+}
+.tcButton{
+    width: 85%;
+    margin-left: 8%;
+    border-radius: 14px;
+    --background: #4FB7C0;
+}
+ion-checkbox{
+    --background-checked: #4FB7C0;
+    --border-color-checked: #00ffff00;
+    --border-radius: 6px;
+}
+.lCard{
+    border-radius: 14px;
+    margin-right: 3%;
+    margin-left: 3%;
+    padding-bottom: 76%;
+}
+.card-content-md h2 {
+    text-align: center;
+}
+ion-text.tcHead{
+    color: #4e39c1;
+}
+ion-card {
+    display: flex;
+    flex-direction: column;
+    --background:#f1f9ff;
+  }
+
+.container{
+    margin-top: 2vh;
+    width: auto;
+    display: block;
+}
+
+.logoImg{
+    text-align: center;
+    width: 35%;
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+.fixed {
+    overflow-y:scroll; overflow-x:hidden; height:70%;
+}
+
+.errorTxts{
+    color: red;
+}

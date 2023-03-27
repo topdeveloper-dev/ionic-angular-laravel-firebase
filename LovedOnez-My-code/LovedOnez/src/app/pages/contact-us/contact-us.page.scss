@@ -1,0 +1,35 @@
+ion-content.appBackground {
+ --background: #f2f2f2;
+    // background-color: rgba(52, 73, 94, 0.75);
+}
+
+.txtContent{
+    margin-left: 5%;
+}
+
+ion-text.contLabel{
+    font-weight: 600;
+}
+
+ion-card.lCard2 {
+    border-radius: 9%;
+    width: 74%;
+    background-color: #e5ebee;//#e5ebee  rgb(229, 235, 238)
+    box-shadow:none !important
+}
+
+
+ion-card.logoImg3{
+    border-radius: 4%;
+    margin-left: 5%;
+    margin-right: 31%;
+}
+
+.container2{
+    margin-left: 14%;
+    margin-top: 12%;
+}
+.txtContentH{
+    font-size: 120%;
+    font-weight: 600;
+}

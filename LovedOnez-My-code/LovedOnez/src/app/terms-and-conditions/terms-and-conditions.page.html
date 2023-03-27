@@ -1,0 +1,40 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content  class="login" padding>
+  <div class="fixed" id="myFixZone">
+    <ion-card class="lCard">
+      <ion-card-content>
+        <div class="logoImg">
+          <ion-img class [src]="appLogo" (click)="goToWelcomeVideo();"></ion-img>
+        </div>
+        <ion-text class="tcHead">
+          <h2>Terms & Conditions</h2>
+        </ion-text>
+        <ion-text class="ion-text-justify">
+          <p style="text-align: justify;">
+            {{ tcData }}
+          </p>
+        </ion-text>
+       
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+    <ion-item class="tcItem">
+      <ion-label class="tcTxt">
+        I have read the Terms & Conditions.
+      </ion-label> 
+      <ion-checkbox [(ngModel)]="isCheckedtc" ></ion-checkbox>
+    </ion-item>
+    <br>
+    <ion-button shape="round" expand="block" class="tcButton" (click)="goToWelcomeVideo()">Continue</ion-button>
+    <span class="error ion-padding errorTxts" color="red" *ngIf="tcMessage!=='' && !isCheckedtc">
+      {{ tcMessage }}
+    </span>
+
+
+</ion-content>

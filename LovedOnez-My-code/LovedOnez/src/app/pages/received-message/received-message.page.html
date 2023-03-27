@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button>
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Received Message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+
+  <ion-card>
+    <ion-grid>
+      <ion-item-divider class="messageDivider" *ngFor="let message of messages">
+        <ion-row style="background-color: {{ messageViewStatus(message.viewStatus).color }};" (click)="viewMessage(message.memoryid)" >
+          <ion-col size="2">
+            <div class="qwIcon" style="background: {{ getIconData(message.memoryType).color }}; border-radius: 50%; padding: 16px; margin-top: 12px;">
+              <ion-icon name="{{ getIconData(message.memoryType).icon }}-outline" class="custom-icon" style="color: aliceblue; font-weight: bold;" size="small" ></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col size="8">
+            <div>
+              <ion-row>
+                <ion-col size="12" size-md>
+                  <div class="messageName">
+                    {{ message.memoryName }}
+                  </div>
+                </ion-col>
+                <ion-col size="12" size-md>
+                  <ion-text color="primary">{{ message.memoryType }}:</ion-text>{{ getdate(message.dateCreated) }}
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+          <ion-col  size="2">
+            <div class="divCenter">
+              <ion-icon  name="arrow-down-outline" style="color: #EE6C6D" size="large"  ></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-item-divider>
+    </ion-grid>
+</ion-card>
+
+</ion-content>

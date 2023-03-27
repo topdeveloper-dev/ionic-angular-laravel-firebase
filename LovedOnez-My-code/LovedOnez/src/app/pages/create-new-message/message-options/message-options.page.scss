@@ -1,0 +1,23 @@
+ion-content.appBackground {
+    --background: url('/assets/img/login_background.jpg') no-repeat 58% 72%;
+    // background-color: rgba(52, 73, 94, 0.75);
+    
+}
+
+.custom-icon {
+    font-size: 90% !important;
+}
+
+.memoryType{
+    font-size: 17px;
+    font-weight: bold;
+    color: #0B5170;
+    padding-top: 5px;
+}
+
+@media screen and (min-height : 640px) and (max-height : 640px) {
+    .qwIcon{
+        padding: 14px !important;
+    }
+}
+

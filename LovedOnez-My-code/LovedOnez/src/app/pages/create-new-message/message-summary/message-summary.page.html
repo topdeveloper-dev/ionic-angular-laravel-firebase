@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="appBackground">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Message Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+  <div style="text-align: center !important;" >
+    <div class="memoryTypeHead">
+      <ion-label color="danger" >{{ memoryTypeDisplay }} Summary</ion-label>
+    </div>
+    <div class="messageReceiveDetailsHead">
+      <ion-label color="secondary" >Loved One</ion-label>
+    </div>
+    <div class="messageReceiveDetailsContent">
+      <ion-row>
+        <ion-col size="6" size-md>
+          <ion-card>
+            <ion-card-content>
+              {{ receiverName }} {{ receiverSurname }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <ion-card>
+            <ion-card-content>
+              {{ receiverEmail }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <ion-card>
+            <ion-card-content>
+              {{ receiverContactNumber }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="messageReceiveDetailsHead">
+      <ion-label color="secondary" >{{ memoryTypeDisplay }}</ion-label>
+    </div>
+
+    <div class="messageReceiveDetailsContent">
+      <ion-row>
+        <ion-col size="12" size-md>
+          <ion-card>
+            <ion-card-content>
+              {{ messageName }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md *ngIf="messageBodyStatus">
+          <ion-card>
+            <ion-card-content>
+              <div class="ion-text-justify">
+                <ion-text>
+                  {{ messageBody }}
+                </ion-text>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12" size-md *ngIf="audioStatus">
+          <ion-card>
+            <ion-card-content>
+              <div *ngIf="memory.memoryType == 'voice' || memory.memoryType == 'all-in-one'" class="divCenter">
+                <ion-button class="loginPage" color="primary" (click)="playAudio(memory.audioLocalUrl)">
+                    <ion-icon name="play-outline" color="danger"></ion-icon>
+                </ion-button>
+                
+              </div> 
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12" size-md  *ngIf="videoStatus">
+          <div class="divCenter">
+            <video width="70%" controls="controls" autoplay="false" [src]="videoPlayUrl" type='video/mp4'>
+              Your browser does not support the video tag.
+            </video>
+          </div>
+      </ion-col>
+
+
+      </ion-row>
+    </div>
+
+    <ion-card *ngIf="showMapStatus">
+      <ion-card-content>
+        <div #mapElement class="map divCenter"></div>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-item class="homeDevider">
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col size="6" size-md>
+        <ion-button  shape="round" expand="block" fill="outline" (click)="previewMemory()">PREVIEW</ion-button>
+      </ion-col>
+      <ion-col size="6" size-md>
+        <ion-button  shape="round" expand="block" color="secondary" (click)="finished()" >FINISHED</ion-button>
+      </ion-col>
+    </ion-row>
+  
+    <!-- <ion-item class="homeDevider">
+    </ion-item> -->
+
+  </div>
+</ion-content>

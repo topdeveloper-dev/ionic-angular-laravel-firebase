@@ -1,0 +1,66 @@
+
+
+<ion-content class="appBackground">
+  <div style="text-align: center !important;">
+
+    
+    <div class="memoryHeader">
+      <ion-text color="secondary">
+        {{ messageName }}
+      </ion-text>
+    </div>
+    <div class="senderInfo">
+      <ion-text color="secondary">
+        From {{ senderName }}
+      </ion-text>
+    </div>
+    <div *ngIf="textMessageStatus" class="memoryBody ion-text-justify">
+      {{ messageBody }}
+    </div>
+
+    <ion-col size="12" size-md *ngIf="voiceMessageStatus && audioNotDownLoaded">
+      <ion-card>
+        <ion-card-content>
+          <div class="divCenter">
+            <ion-button class="loginPage" color="primary" (click)="playAudio(memory.audioLocalUrl)">
+                <ion-icon name="play-outline" color="danger"></ion-icon>
+            </ion-button>
+          </div> 
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" size-md *ngIf="audioFileErrorStatus">
+      <ion-card>
+        <ion-card-content>
+          <div class="divCenter">
+            <ion-text color="danger">
+              <h2>{{ audioFileError }}!</h2>
+            </ion-text>
+          </div> 
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="12" size-md  *ngIf="videoMessageStatus && audioNotDownLoaded">
+      <div class="divCenter">
+        <video width="70%" controls="controls" autoplay="false" [src]="videoPlayUrl" type='video/mp4'>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+  </ion-col>
+
+
+  <ion-card *ngIf="showMapStatus">
+    <ion-card-content>
+      <div #mapElement class="map divCenter"></div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+    <div class="backButton">
+      <ion-button color="primary" expand="round" (click)="goToPreviousPage()">BACK</ion-button>
+    </div>
+  </div>
+</ion-content>

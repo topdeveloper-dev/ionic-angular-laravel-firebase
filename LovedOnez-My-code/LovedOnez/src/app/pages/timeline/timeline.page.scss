@@ -1,0 +1,21 @@
+ion-content.appBackground {
+    --background: #F2F2F2;
+    // background-color: rgba(52, 73, 94, 0.75);
+    
+}
+
+ion-label.subHeader{
+    font-size: 18px;
+    font-family: Marker Felt, fantasy;
+}
+ion-label.messageHeader{
+    font-size: 17px;
+    font-weight: 700;
+}
+ion-label.messageDate{
+    font-size: 13px;
+}
+.messageInfo{
+    padding-bottom: 25px;
+}
+

@@ -1,0 +1,14 @@
+.memoryHeader{
+    font-size: large;
+    font-weight: 600;
+    color: gray; 
+}
+
+ion-content.appBackground {
+    --background: #ffffff;
+	min-height: 70vh;
+} 
+
+.ion-page{
+    --display: inherit;
+	}

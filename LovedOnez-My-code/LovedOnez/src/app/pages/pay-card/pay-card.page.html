@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>pay-card</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="ionicForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="main-content">
+
+    <ion-label>1. Select Your Payment Card</ion-label>
+
+    <ion-row style="margin-top: 20px;">
+      <ion-col size="4">
+          <div class="square_visa">
+
+          </div>
+      </ion-col>
+
+      <ion-col size="4">
+        <div class="square_mastercard">
+
+        </div>
+    </ion-col>
+
+    <ion-col size="4">
+      <div class="square_amExpess">
+
+      </div>
+  </ion-col>
+    </ion-row>
+
+    <ion-label>2. Enter Your Card Details</ion-label>
+    <br>
+    <ion-label>Card Type</ion-label>
+
+    <ion-input type="text" formControlName="card_type" placeholder="VISA"></ion-input>
+
+    <ion-label>Card Number</ion-label>
+    <ion-input type="text" formControlName="card_no" placeholder="XXXX-XXXX-XXXX-1243"></ion-input>
+
+    <ion-row>
+      <ion-col size="4" class="left_col">
+        <ion-input type="number" formControlName="card_month" placeholder="MM"></ion-input>
+      </ion-col>
+      <ion-col size="4" >
+        <ion-input type="number" formControlName="card_year"placeholder="YYYY"></ion-input>
+      </ion-col>
+      <ion-col size="4" class="right_col">
+        <ion-input type="number" formControlName="card_cvv" placeholder="CVV"></ion-input>
+      </ion-col>
+
+      <ion-input type="text" formControlName="card_holder" placeholder="Card Holder Name"></ion-input>
+
+    </ion-row>
+
+    <ion-button type="submit" expand="block" >Procced</ion-button>
+
+  </div>
+</form>
+
+</ion-content>

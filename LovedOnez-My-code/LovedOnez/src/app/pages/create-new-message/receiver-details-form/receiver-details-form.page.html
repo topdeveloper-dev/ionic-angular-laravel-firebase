@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="appBackground">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Enter Receivers Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+  <ion-card-content>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item class="">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" [(ngModel)]="receiverName" formControlName="receiverName" ></ion-input>
+    </ion-item>
+    <ion-item class="">
+        <ion-label position="floating">Surname</ion-label>
+        <ion-input  type="text" [(ngModel)]="receiverSurname" formControlName="receiverSurname" ></ion-input>
+      </ion-item>   
+    <ion-item class="">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input  type="text" [(ngModel)]="receiverEmail" formControlName="receiverEmail" ></ion-input>
+      </ion-item>   
+    <ion-item class="">
+        <ion-label position="floating">Contact Number</ion-label>
+        <ion-input  type="text" [(ngModel)]="receiverContactNumber" formControlName="receiverContactNumber" ></ion-input>
+      </ion-item>   
+      <div style="text-align: center !important;" >
+        <ion-button class="loginPage" color="primary" expand="round" (click)="previousPage()" >
+          <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+          previous
+      </ion-button>
+        <ion-button type="submit" class="loginPage" color="primary" expand="round" >
+            <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+            Next
+        </ion-button>
+      </div>
+    </form>
+
+  </ion-card-content>
+
+</ion-content>

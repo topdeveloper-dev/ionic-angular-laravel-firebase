@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center">Loved Onez</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+
+  <div class="container ion-text-center">
+    <ion-card  class="lCard" (click)="goToCreateMessage()">
+      <ion-card-content>
+        <div class="ion-text-center">
+          <ion-icon color="danger" size="large" class="homeIcon" style="zoom:4.0;" name="pencil-outline"></ion-icon>
+          <ion-text color="secondary">
+            <h2>CREATE NEW MESSAGE</h2>
+          </ion-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-item class="homeDevider">
+    </ion-item>
+    <ion-card  class="lCard" (click)="goToViewMessages()">
+      <ion-card-content>
+        <div class="ion-text-center">
+          <ion-icon color="secondary" size="large" class="homeIcon" style="zoom:4.0;" name="document-text"></ion-icon>
+          <ion-text color="secondary">
+            <h2>VIEW MESSAGES</h2>
+          </ion-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- <ion-button expand="block" (click)="toCard()">Procced</ion-button> -->
+
+  <!-- <br>
+
+  My Id from push: {{ id }}
+
+  <ion-button (click)="resetBadgeCount()" expand="block">
+    Reset Badge Count
+  </ion-button> -->
+
+</ion-content>

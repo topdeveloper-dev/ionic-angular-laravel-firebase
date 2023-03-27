@@ -1,0 +1,101 @@
+
+<ion-header no-border no-shadow translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center">Sign Up Now</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-content  class="login" no-scroll padding fullscreen>
+    <!-- <ion-img width="20px" height="20px" [src]="appLogo"></ion-img> -->
+    <ion-card *ngIf="createAccountStatus" class="lCard">
+      <ion-card-header>
+        <ion-card-title>
+            Account Created
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        An activation link has been sent to your email, Please follow the link to activate your Account, then you can proceed to Login.
+      </ion-card-content>
+      <ion-button class="loginPage" color="danger" expand="block" (click)='gotoLogin()'>
+        Go to Login
+    </ion-button>
+    </ion-card>
+
+    <ion-card *ngIf="!createAccountStatus" class="lCard">
+      <ion-card-content>
+        <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+          <!-- <ion-input type="file" accept="image/*" id="upload" ></ion-input> -->
+          <button ion-button (click)="captureImage()" full color="primary"  *ngIf="!myImage">Take Photo</button>
+          <!-- <button ion-button (click)="cropImage()" full color="danger">Crop Image</button> -->
+          <!-- <angular-cropper #angularCropper [cropperOptions]="cropperOptions" [imageUrl]="myImage"></angular-cropper> -->
+
+
+          <ion-item class="loginPage">
+            <ion-label position="floating">First name</ion-label>
+            <ion-input type="text" formControlName="firstname"></ion-input>
+          </ion-item>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.firstname.errors?.required">
+                First name is required.
+              </span>
+        <ion-item class="loginPage">
+          <ion-label position="floating">Last name</ion-label>
+          <ion-input type="text" formControlName="lastname"></ion-input>
+        </ion-item>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lastname.errors?.required">
+              Last name is required.
+            </span>
+          <ion-item class="loginPage">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+          Email is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+          Please provide valid email id.
+        </span>
+        <span class="error ion-padding" *ngIf="!createAccountStatus && isSubmitted && !errorControl.email.errors?.required && !errorControl.email.errors?.pattern">
+          Email already exists.
+        </span>
+        <ion-item class="loginPage">
+          <ion-label position="floating">Mobile Number</ion-label>
+          <ion-input type="number" formControlName="mobileNumber"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobileNumber.errors?.required">
+        Mobile number is required.
+      </span>
+
+        <ion-item class="loginPage">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+             Password should be least one digit, at least one lowercase character, At least one uppercase character, At least one special character, At least 8 characters in length, but no more than 32.
+            </span>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Password is required.
+        </span>
+        <ion-item class="loginPage">
+          <ion-label position="floating">Verify Password</ion-label>
+          <ion-input type="password" formControlName="passwordConfirm"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && ionicForm.value.password != ionicForm.value.passwordConfirm">
+        Verify password does not match with Password.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
+        Verify Password is required.
+      </span>
+          <ion-button type="submit" class="loginPage" color="primary" expand="block">
+              <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+              Sign Up
+          </ion-button>
+        </form>
+
+      </ion-card-content>
+
+    </ion-card>
+
+</ion-content>

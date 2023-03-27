@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <div>
+          <ion-card class="card-center profImg profilepic">
+            <ion-card-content>
+              <div class="profImg">
+                <ion-img class="profileImage"  [src]="profilePic"></ion-img>
+              </div>
+            </ion-card-content>
+            </ion-card>
+            <!-- <ion-button style="margin: -79px 11px 6px 57px; --box-shadow: none;" color="transparant" class="profilebutton" (click)="selectImage()" >
+              <ion-icon slot="icon-only" color="danger" name="camera"></ion-icon>
+            </ion-button> -->
+            <ion-button style="--box-shadow: none; z-index: 1; position: absolute; margin: -57px 11px 6px 23px;" class="loginPage" color="secondary" expand="block" color="transparant" (click)="selectImage()">
+              <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+              <ion-icon slot="icon-only" color="danger" name="camera"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col >
+      <ion-col class="userName" size="9">
+      <span>
+       {{ firstName }} {{ lastName }}
+      </span> 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- <img src="{{ myImage }}"> -->
+  <ion-card *ngIf="cropCard">
+    <ion-card-content>
+      <!-- <image-cropper 
+      [imageBase64]="myImage" 
+      [maintainAspectRatio]="true" 
+      [aspectRatio]="4 / 4" 
+      format="png" 
+      (imageCropped)="imageCropped($event)" 
+      outputType="base64">
+      </image-cropper> -->
+      <ion-button expand="full" (click)="doneCroping()" >
+        crop
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <!-- <ion-input type="file" accept="image/*" id="upload" ></ion-input> -->
+    <!-- <button ion-button (click)="captureImage()" full color="primary"  *ngIf="!myImage">Take Photo</button> -->
+    <!-- <button ion-button (click)="cropImage()" full color="danger">Crop Image</button> -->
+    <!-- <angular-cropper #angularCropper [cropperOptions]="cropperOptions" [imageUrl]="myImage"></angular-cropper> -->
+   
+    
+    <ion-item class="loginPage">
+      <ion-label position="floating">First name</ion-label>
+      <ion-input type="text" formControlName="firstname"></ion-input>
+    </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.firstname.errors?.required">
+          First name is required.
+        </span>
+  <ion-item class="loginPage">
+    <ion-label position="floating">Last name</ion-label>
+    <ion-input type="text" formControlName="lastname"></ion-input>
+  </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lastname.errors?.required">
+        Last name is required.
+      </span>
+      <ion-item class="loginPage">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" formControlName="userName"></ion-input>
+      </ion-item>
+      <ion-item class="loginPage">
+        <ion-label position="floating">Date of Birth</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dateOfBirth" pickerFormat="DDDD MMMM YYYY" min="1940" max="2021">
+        </ion-datetime>
+      </ion-item>
+      <ion-item class="loginPage">
+        <ion-label position="floating">Country</ion-label>
+        <!-- <ion-input type="text" formControlName="country"></ion-input> -->
+        <ion-select formControlName="country">
+          <ion-select-option *ngFor="let country of countries" value="{{ country.name }}">
+            {{ country.name }}
+          </ion-select-option>
+     </ion-select>
+        <!-- <select-searchable
+        item-content
+        [(ngModel)]="port"
+        [items]="ports"
+        itemValueField="id"
+        itemTextField="name"
+        [canSearch]="true"
+        (onChange)="portChange($event)">
+    </select-searchable> -->
+      </ion-item>
+    <ion-item class="loginPage">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" readonly formControlName="email"></ion-input>
+  </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+    Email is required.
+  </span>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+    Please provide valid email id.
+  </span>
+  <!-- <span class="error ion-padding" *ngIf="!createAccountStatus && isSubmitted && !errorControl.email.errors?.required && !errorControl.email.errors?.pattern">
+    Email already exists.
+  </span> -->
+  <ion-item class="loginPage">
+    <ion-label position="floating">Mobile Number</ion-label>
+    <ion-input type="number" formControlName="mobileNumber"></ion-input>
+</ion-item>
+<span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobileNumber.errors?.required">
+  Mobile number is required.
+</span>
+
+<ion-item class="loginPage">
+  <ion-label position="floating">memoriesMade</ion-label>
+  <ion-input type="memoriesMade" readonly formControlName="memoriesMade"></ion-input>
+</ion-item>
+  
+  <ion-item class="loginPage">
+      <ion-label position="floating">{{ passName }}</ion-label>
+      <ion-input type="password" formControlName="oldPassword" ></ion-input>
+      <ion-button clear slot="end" (click)="updatePassword()"><ion-icon name="pencil-outline"></ion-icon></ion-button>
+    </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.oldPassword.errors?.pattern">
+   Password should be least one digit, at least one lowercase character, At least one uppercase character, At least one special character, At least 8 characters in length, but no more than 32.
+  </span>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.oldPassword.errors?.required">
+    Password is required.
+  </span>
+  <ion-item class="loginPage" *ngIf="passwordStatus">
+    <ion-label position="floating">New Password</ion-label>
+    <ion-input type="password" formControlName="newPassword"></ion-input>
+</ion-item>
+<span class="error ion-padding" *ngIf="isSubmitted && errorControl.newPassword.errors?.pattern">
+  Password should be least one digit, at least one lowercase character, At least one uppercase character, At least one special character, At least 8 characters in length, but no more than 32.
+ </span>
+<span class="error ion-padding" *ngIf="isSubmitted && errorControl.newPassword.errors?.required">
+  Password is required.
+</span>
+  <ion-item class="loginPage" *ngIf="passwordStatus">
+    <ion-label position="floating">Verify Password</ion-label>
+    <ion-input type="password" formControlName="passwordConfirm"></ion-input>
+</ion-item>
+<span class="error ion-padding" *ngIf="isSubmitted && ionicForm.value.newPassword != ionicForm.value.passwordConfirm">
+  Verify password does not match with Password.
+</span>
+<span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
+  Verify Password is required.
+</span>
+    <ion-button type="submit" class="loginPage" color="secondary" expand="block">
+        <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+        SAVE
+    </ion-button>
+    <ion-button type="submit" class="loginPage" color="secondary" expand="block" fill="outline">
+      <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+      Delete Account
+    </ion-button>
+  </form>
+              
+  
+
+</ion-content>

@@ -1,0 +1,30 @@
+ion-content.login {
+    --background: url('/assets/img/login_background.jpg') no-repeat 50% 50%;
+    // background-color: rgba(52, 73, 94, 0.75);
+    
+    
+}
+.lCard{
+    border-radius: 34px;
+    margin-right: 14%;
+    margin-left: 14%;
+    background-color: hsla(255, 255, 255, 0.3);
+}
+
+
+.container{
+    margin-top: 18vh;
+    width: auto; 
+    display: block;
+}
+
+.logoImg{
+    text-align: center;
+    width: 94%;
+    padding-top: 0px;
+    margin-left: 3%;
+    margin-right: 16%;
+    display: block;
+}
+
+

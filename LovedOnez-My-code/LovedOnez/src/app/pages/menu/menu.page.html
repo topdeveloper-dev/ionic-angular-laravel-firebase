@@ -1,0 +1,71 @@
+<ion-app>
+  <ion-menu  (ionWillClose)="updateMenuState(false)" (ionWillOpen)="updateMenuState(true)" contentId="main-content" side="start">
+    <!-- <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header> -->
+
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-card class="card-center profImg">
+              <ion-card-content>
+                <div class="profImg">
+                  <ion-img class="profileImage" [src]="profilePic" [routerLink]="pages[4].url" routerDirection="root" ></ion-img>
+                </div>
+              </ion-card-content>
+              </ion-card>
+          </ion-col >
+          <ion-col class="userName" size="8">
+            <ion-row>
+              <ion-col size="12" size-md>
+                <ion-text color="secondary" class="userNameD">
+                  {{ userName }}
+                </ion-text>
+              </ion-col>
+              <ion-col size="12" size-md>
+                <ion-text color="secondary" class="location">
+                  Boksburg, Gauteng, RSA
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+      
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
+          <div class="menuItem">
+            <ion-item lines="none" [routerLink]="page.url" routerDirection="root" [class.active-item]="selectedPath === page.url" >
+              <ion-icon color="secondary"  name="{{ page.icon }}"></ion-icon>&nbsp;&nbsp;<ion-text class="menuItemTxt" color="secondary">{{ page.title }}</ion-text>
+            </ion-item>
+          </div>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <div class="container2">
+        <ion-card class="lCard2">
+          <ion-card-content>
+            <div class="logoImg3">
+              <ion-img class [src]="appLogo"></ion-img>
+            </div> 
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+    </ion-content>
+    <ion-footer>
+      <div class="ion-text-center">
+        <ion-toolbar color="primary" (click)="logout()">
+          <ion-title>LOG OUT</ion-title>
+        </ion-toolbar>
+      </div>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="main-content" main></ion-router-outlet>
+  
+
+</ion-app>

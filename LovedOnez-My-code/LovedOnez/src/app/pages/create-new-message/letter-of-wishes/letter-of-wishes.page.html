@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="appBackground">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Letter Of Wishes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="appBackground">
+  <ion-card-content>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item class="">
+        <ion-label position="floating">Message Name</ion-label>
+        <ion-input type="text" [(ngModel)]="memoryName" formControlName="memoryName"></ion-input>
+    </ion-item>
+    <ion-item class="">
+        <ion-label position="floating">Message</ion-label>
+        <ion-textarea  type="text" [(ngModel)]="memoryBody" formControlName="memoryBody" placeholder="Please type in your message here."></ion-textarea>
+      </ion-item>   
+      <div style="text-align: center !important;" >
+        <ion-button type="submit" class="loginPage" color="primary" expand="round" >
+            <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+            Next
+        </ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+
+</ion-content>

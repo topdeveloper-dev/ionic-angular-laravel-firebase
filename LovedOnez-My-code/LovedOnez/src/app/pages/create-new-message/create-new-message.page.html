@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center">Lovedn1z</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="appBackground">
+  <ion-card-content>
+    <ion-card *ngFor="let massageType of massageTypes"  class="lCard" [routerLink]="massageType.url" routerDirection="root">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <div class="memoryType">
+                {{ massageType.title }}
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <!-- <div class="qwIcon" style="background: {{ massageType.iconBackground }}; border-radius: 50%; padding: 3px;">
+                <ion-icon name="{{ massageType.icon }}" class="custom-icon" style="color: aliceblue; font-weight: bold;" size="large" ></ion-icon>
+              </div> -->
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card>
+    </ion-card-content>
+</ion-content>

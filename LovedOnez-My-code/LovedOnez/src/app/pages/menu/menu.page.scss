@@ -1,0 +1,49 @@
+.active-item {
+    border-left: 8px solid var(--ion-color-primary);
+}
+ion-card.profImg{
+    border-radius: 50%;
+    width: 94%;
+}
+ion-card.logoImg3{
+    border-radius: 4%;
+    margin-left: 5%;
+    margin-right: 31%;
+}
+ion-card.lCard2 {
+    border-radius: 9%;
+    width: 60%;
+    background-color: #e5ebee;//#e5ebee  rgb(229, 235, 238)
+    box-shadow:none !important
+}
+.menuItem{
+    margin-left: 20%;
+}
+ion-text.menuItemTxt{
+    font-weight: 500;
+}
+.container2{
+    margin-left: 24%;
+}
+.profileImage{
+    margin-top: 5px;
+    transform: scale(1.9);
+}
+.card-center{
+    display:block;
+    // margin: 0 auto;
+    margin-top: 20px;
+}
+
+.userName{
+    padding-top: 38px;
+    padding-left: 20px;
+    width: 94%;
+}
+.userNameD{
+    font-size: 17px;
+    font-weight: 600;
+}
+.location{
+    font-size: 13px;
+}

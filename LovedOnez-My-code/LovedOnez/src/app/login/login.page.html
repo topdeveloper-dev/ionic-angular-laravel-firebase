@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="logoImg">
+    <ion-img class [src]="appLogo"></ion-img>
+  </div>
+
+  <ion-card class="lCard">
+    <ion-card-header>
+        <ion-card-title>
+            Login
+        </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+        <ion-item class="loginPage">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" formControlName="email"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+        Email is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+        Email is expected.
+      </span>
+      <ion-item class="loginPage">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Email is required.
+        </span>
+        <ion-button type="submit" class="loginPage" color="primary" expand="block" >
+            <!-- <ion-icon slot="start" name="save-outline"></ion-icon> -->
+            Login
+        </ion-button>
+
+
+      </form>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && !loginStatus">{{ loginMessage }}</span>
+      <ion-item class="ion-text-end" button (click)="forgotPassword()">
+        <ion-label color="danger" class="fpText">
+          Forgot Password?
+        </ion-label>
+      </ion-item>
+      <br>
+      <ion-item lines="none"  class="ion-text-center" (click)="toRegForm()">
+        <ion-label style="font-weight: bold;" color="secondary">
+          SIGN UP
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+    <span class="error ion-padding">{{ fullName }}</span>
+
+
+  </ion-card>
+ 
+</ion-content>

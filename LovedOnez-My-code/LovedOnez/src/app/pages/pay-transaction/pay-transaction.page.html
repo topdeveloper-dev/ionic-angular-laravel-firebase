@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <!--{{ paymentPlan }} Payments-->
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div class="card"></div>
+
+  <ion-item-divider></ion-item-divider>
+  <ion-label><p>Amount Due</p></ion-label>
+  <ion-label name="amount_due" class="amount"><h2>R {{this.amount}}</h2></ion-label>
+  <ion-item-divider></ion-item-divider>
+  <ion-button expand="block" (click)="onSubmit()">Pay Now</ion-button>
+
+  <ion-input type="text"></ion-input>
+
+
+   <div *ngFor="let item of items" (click)="onSubmit()">
+    <!-- <ion-label class="payDetails"  [(ngModel)] = item.tokenizationID>
+        {{item.tokenizationID}}
+     </ion-label>
+     <ion-label class="payDetails">
+       {{item.userId}}
+     </ion-label> -->
+
+      <!-- <ion-input type="text" [(ngModel)]="token">
+       {{item.tokenizationID}}
+     </ion-input> -->
+
+     <label>{{token}}</label>
+    <!-- <ion-input formControlName="card_UserId"class="payDetails">
+       {{item.userId}}
+     </ion-input> -->
+
+ </div>
+
+
+
+</ion-content>

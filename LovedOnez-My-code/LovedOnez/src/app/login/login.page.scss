@@ -1,0 +1,26 @@
+ion-content.login {
+  --background: url('/assets/img/login_background.jpg') no-repeat 50% 50%;
+  // background-color: rgba(52, 73, 94, 0.75);
+
+}
+
+.loginPage {
+  opacity: 0.8;
+}
+
+.lCard{
+  opacity: 0.8;
+}
+.logoImg{
+  text-align: center;
+  width:60%;
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+ion-label.fpText{
+  color: #47d5ff;
+  font-size: 12px;
+}
